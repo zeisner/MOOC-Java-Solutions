@@ -1,0 +1,30 @@
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        
+        NumberStatistics stats = new NumberStatistics();
+        NumberStatistics evenSum = new NumberStatistics();
+        NumberStatistics oddSum = new NumberStatistics();
+        
+        System.out.println("Type numbers:");
+        int x = Integer.parseInt(reader.nextLine());
+        
+        while (x >= 0) {
+            stats.addNumber(x);
+            if (x % 2 == 0) {
+                evenSum.addNumber(x);
+            } else if (x % 2 == 1) {
+                oddSum.addNumber (x);
+            }
+            x = Integer.parseInt(reader.nextLine());
+        }
+        
+        System.out.println("sum: " + stats.sum());
+        System.out.println("Sum of even: " + evenSum.sum());
+        System.out.println("Sum of odd: " + oddSum.sum());
+    }
+}
