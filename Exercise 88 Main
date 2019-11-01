@@ -1,0 +1,39 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        ArrayList<Student> list = new ArrayList<Student>();
+        String name = "";
+        do {
+            System.out.println("name: ");
+            name = reader.nextLine();
+            if ("".equals(name)) {
+                for (Student personAdded : list) {
+                    System.out.println(personAdded);
+                }
+                
+                System.out.println("Give search term: ");
+                String searchTerm = reader.nextLine();
+                System.out.println("Result:");
+                
+                for (Student personSearched : list) {
+                    if (personSearched.getName().contains(searchTerm)) {
+                        
+                        System.out.println(personSearched.toString());
+                    }
+                    
+                }
+                return;
+            }
+            
+            System.out.println("studentnumber: ");
+            String number = reader.nextLine();
+            list.add(new Student(name, number));
+        } while (!"".equals(name));
+
+    }
+}
