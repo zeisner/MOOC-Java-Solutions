@@ -1,0 +1,36 @@
+
+import java.util.ArrayList;
+
+public class Phonebook {
+
+    private ArrayList<Person> phonebook;
+
+    public Phonebook() {
+        this.phonebook = new ArrayList<Person>();
+    }
+
+    public void add(String name, String number) {
+
+        Person prs = new Person(name, number);
+        this.phonebook.add(prs);
+    }
+
+    public void printAll() {
+        for (Person prs : this.phonebook) {
+            System.out.println(prs);
+        }
+    }
+
+    public String searchNumber(String name) {
+        String searchNum = "number not known";
+
+        for (Person prs : this.phonebook) {
+            if (prs.getName().contains(name)) {
+                searchNum = prs.getNumber();
+            }
+        }
+
+        return searchNum;
+    }
+
+}
