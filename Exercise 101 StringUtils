@@ -1,0 +1,16 @@
+
+public class StringUtils {
+
+    public static boolean included(String word, String searched) {
+        word = word.toUpperCase().trim();
+
+        searched = searched.trim().toUpperCase();
+
+        if (word.contains(searched)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+}
