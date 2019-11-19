@@ -1,0 +1,77 @@
+
+import java.util.ArrayList;
+
+
+public class Score {
+
+    private ArrayList<Integer> scores;
+
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    int d = 0;
+    int e = 0;
+    int f = 0;
+    int passed = 0;
+
+    public Score() {
+        this.scores = new ArrayList<Integer>();
+    }
+
+    public void addScore(Integer score) {
+        if (score >= 0 && score <= 60) {
+            scores.add(score);
+        }
+    }
+
+    public void numberStars() {
+
+        for (int score : scores) {
+            if (score >= 50) {
+                a++;
+            } else if (score >= 45 && score < 50) {
+                b++;
+            } else if (score >= 40 && score < 45) {
+                c++;
+            } else if (score >= 35 && score < 40) {
+                d++;
+            } else if (score >= 30 && score < 35) {
+                e++;
+            } else {
+                f++;
+            }
+        }
+    }
+
+    public String printStars(int starNumber) {
+        String starLine = "";
+        for (int i = 0; i < starNumber; i++) {
+            starLine += "*";
+        }
+        return starLine;
+    }
+
+
+    public void printStarsAndNumbers() {
+        System.out.println("Grade distribution:");
+        System.out.println("5: " + printStars(a));
+        System.out.println("4: " + printStars(b));
+        System.out.println("3: " + printStars(c));
+        System.out.println("2: " + printStars(d));
+        System.out.println("1: " + printStars(e));
+        System.out.println("0: " + printStars(f));
+    }
+
+    public int amountPassed() {
+        passed = a + b + c + d + e;
+        return passed;
+    }
+
+    public int totalScored() {
+        return scores.size();
+    }
+
+    public void accPercentage() {
+        System.out.println("Acceptance percentage: " + 100.0 * amountPassed() / totalScored());
+    }
+}
