@@ -1,0 +1,24 @@
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Score Score = new Score();
+        Scanner reader = new Scanner(System.in);
+        int score = 0;
+
+        System.out.println("Type exam scores, -1 completes:");
+        while (score != -1) {
+            score = Integer.parseInt(reader.nextLine());
+            Score.addScore(score);
+
+            if (score == -1) {
+                Score.numberStars();
+                Score.printStarsAndNumbers();
+                Score.accPercentage();
+            }
+
+        }
+    }
+}
