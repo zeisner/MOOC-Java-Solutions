@@ -1,0 +1,110 @@
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class newBird {
+
+    int birdNumber = 0;
+    int length = 10;
+    private ArrayList<String> birdName;
+    private ArrayList<String> latinName;
+    private int[] birdCount;
+    Scanner reader = new Scanner(System.in);
+
+    public newBird() {
+
+        this.birdName = new ArrayList<String>();
+        this.latinName = new ArrayList<String>();
+        birdCount = new int[length];
+    }
+
+    public void addBird() {
+
+        System.out.print("Name: ");
+        String newName = reader.nextLine();
+        birdName.add(newName);
+        System.out.print("Latin Name: ");
+        String newLatin = reader.nextLine();
+        latinName.add(newLatin);
+        birdCount[birdNumber] = 0;
+        birdNumber++;
+        System.out.print("? ");
+    }
+
+    public void addObservation() {
+        System.out.print("What was observed:? ");
+        String observedName = reader.nextLine();
+        if (!birdName.contains(observedName)) {
+            System.out.println("Is not a bird!");
+            System.out.print("? ");
+        } else {
+            int i = 0;
+
+            for (String name : birdName) {
+                if (observedName.equals(name)) {
+                    int j = birdCount[i];
+                    birdCount[i] = j + 1;
+                    System.out.print("? ");
+
+                } else {
+
+                    i++;
+
+                }
+
+            }
+
+        }
+    }
+
+    public void statistics() {
+        int i = 0;
+        for (String bird : birdName) {
+
+            System.out.println(bird + " (" + latinName.get(i) + "): "
+                    + birdCount[i] + " observations");
+            i++;
+        }
+        System.out.print("? ");
+    }
+
+    public void show() {
+        int i = 0;
+        System.out.println("What? ");
+        String showBird = reader.nextLine();
+        for (String bird : birdName) {
+            if (bird.contains(showBird)) {
+                System.out.println(bird + " (" + latinName.get(i) + "): "
+                        + birdCount[i] + " observations");
+            }
+            i++;
+        }
+        System.out.print("? ");
+    }
+
+    public void layout() {
+
+        System.out.print("? ");
+
+        String input = reader.nextLine();
+        while (!input.contains("Quit")) {
+
+            if (input.contains("Add")) {
+                addBird();
+                input = reader.nextLine();
+            } else if (input.contains("Observation")) {
+                addObservation();
+                input = reader.nextLine();
+            } else if (input.contains("Statistics")) {
+                statistics();
+                input = reader.nextLine();
+            } else if (input.contains("Show")) {
+                show();
+                input = reader.nextLine();
+            } else {
+                System.out.print("? ");
+                input = reader.nextLine();
+            }
+        }
+    }
+}
